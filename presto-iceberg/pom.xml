@@ -186,14 +186,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.10.2</version>
+            <version>2.13.2</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.10.2</version>
+            <version>2.13.2</version>
             <scope>compile</scope>
         </dependency>
 
@@ -437,7 +437,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.10.2</version>
+            <version>2.13.2</version>
             <scope>provided</scope>
         </dependency>
 
@@ -452,6 +452,12 @@
             <groupId>com.facebook.presto</groupId>
             <artifactId>presto-cache</artifactId>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.alluxio</groupId>
+                    <artifactId>alluxio-shaded-client</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -526,6 +532,7 @@
                 <plugin>
                     <groupId>org.basepom.maven</groupId>
                     <artifactId>duplicate-finder-maven-plugin</artifactId>
+                    <version>1.5.1</version>
                     <configuration>
                         <ignoredResourcePatterns>
                             <ignoredResourcePattern>parquet.thrift</ignoredResourcePattern>
@@ -556,7 +563,6 @@
                         </rules>
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>
