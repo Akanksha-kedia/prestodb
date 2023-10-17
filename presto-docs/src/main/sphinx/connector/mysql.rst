@@ -96,6 +96,125 @@ Finally, you can access the ``clicks`` table in the ``web`` database::
 If you used a different name for your catalog properties file, use
 that catalog name instead of ``mysql`` in the above examples.
 
+Type mapping
+------------
+
+Because PrestoDB and MySQL each support types that the other does not. When reading from or writing to MySQL,
+Presto will convert the data types from MySQL to equivalent Presto data types and vice versa.
+Refer to the following sections for type mapping in each direction.
+
+MySQL to PrestoDB type mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The connector maps MySQL types to the corresponding PrestoDB types following
+this table:
+
+.. list-table:: MySQL to PrestoDB type mapping
+  :widths: 40, 50
+  :header-rows: 1
+
+  * - MySQL database type
+    - PrestoDB type
+  * - ``BIT``
+    - ``BOOLEAN``
+  * - ``BOOLEAN``
+    - ``TINYINT``
+  * - ``TINYINT``
+    - ``TINYINT``
+  * - ``TINYINT UNSIGNED``
+    - ``SMALLINT``
+  * - ``SMALLINT``
+    - ``SMALLINT``
+  * - ``SMALLINT UNSIGNED``
+    - ``INTEGER``
+  * - ``INTEGER``
+    - ``INTEGER``
+  * - ``INTEGER UNSIGNED``
+    - ``BIGINT``
+  * - ``BIGINT``
+    - ``BIGINT``
+  * - ``BIGINT UNSIGNED``
+    - ``DECIMAL(20, 0)``
+  * - ``DOUBLE PRECISION``
+    - ``DOUBLE``
+  * - ``FLOAT``
+    - ``REAL``
+  * - ``REAL``
+    - ``REAL``
+  * - ``DECIMAL(p, s)``
+    - ``DECIMAL(p, s)``
+  * - ``CHAR(n)``
+    - ``CHAR(n)``
+  * - ``VARCHAR(n)``
+    - ``VARCHAR(n)``
+  * - ``TINYTEXT``
+    - ``VARCHAR(255)``
+  * - ``TEXT``
+    - ``VARCHAR(65535)``
+  * - ``MEDIUMTEXT``
+    - ``VARCHAR(16777215)``
+  * - ``LONGTEXT``
+    - ``VARCHAR``
+  * - ``ENUM(n)``
+    - ``VARCHAR(n)``
+  * - ``BINARY``, ``VARBINARY``, ``TINYBLOB``, ``BLOB``, ``MEDIUMBLOB``, ``LONGBLOB``
+    - ``VARBINARY``
+  * - ``JSON``
+    - ``JSON``
+  * - ``DATE``
+    - ``DATE``
+  * - ``TIME(n)``
+    - ``TIME(n)``
+  * - ``DATETIME(n)``
+    - ``DATETIME(n)``
+  * - ``TIMESTAMP(n)``
+    - ``TIMESTAMP(n)``
+
+No other types are supported.
+
+PrestoDB to MySQL type mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The connector maps PrestoDB types to the corresponding MySQL types following
+this table:
+
+.. list-table:: PrestoDB to MySQL type mapping
+  :widths: 40, 50
+  :header-rows: 1
+
+  * - PrestoDB type
+    - MySQL type
+  * - ``BOOLEAN``
+    - ``TINYINT``
+  * - ``TINYINT``
+    - ``TINYINT``
+  * - ``SMALLINT``
+    - ``SMALLINT``
+  * - ``INTEGER``
+    - ``INTEGER``
+  * - ``BIGINT``
+    - ``BIGINT``
+  * - ``REAL``
+    - ``REAL``
+  * - ``DOUBLE``
+    - ``DOUBLE PRECISION``
+  * - ``DECIMAL(p, s)``
+    - ``DECIMAL(p, s)``
+  * - ``CHAR(n)``
+    - ``CHAR(n)``
+  * - ``VARCHAR(n)``
+    - ``VARCHAR(n)``
+  * - ``JSON``
+    - ``JSON``
+  * - ``DATE``
+    - ``DATE``
+  * - ``TIME(n)``
+    - ``TIME(n)``
+  * - ``TIMESTAMP(n)``
+    - ``TIMESTAMP(n)``
+
+No other types are supported.
+
 MySQL Connector Limitations
 ---------------------------
 
