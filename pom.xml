@@ -143,14 +143,12 @@
         <module>presto-cli</module>
         <module>presto-benchmark-driver</module>
         <module>presto-server</module>
-        <module>presto-docs</module>
         <module>presto-verifier</module>
         <module>presto-testing-server-launcher</module>
         <module>presto-plugin-toolkit</module>
         <module>presto-resource-group-managers</module>
         <module>presto-password-authenticators</module>
         <module>presto-session-property-managers</module>
-        <module>presto-benchto-benchmarks</module>
         <module>presto-thrift-api</module>
         <module>presto-thrift-testing-server</module>
         <module>presto-thrift-connector</module>
@@ -1883,7 +1881,7 @@
             <dependency>
                 <groupId>org.xerial.snappy</groupId>
                 <artifactId>snappy-java</artifactId>
-                <version>1.1.7.1</version>
+                <version>1.1.10.4</version>
             </dependency>
 
             <dependency>
